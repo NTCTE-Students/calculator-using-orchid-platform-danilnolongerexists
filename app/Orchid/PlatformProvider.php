@@ -9,6 +9,8 @@ use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Orchid\Support\Color;
+use Orchid\Platform\ItemMenu;
+use Orchid\Support\Facades\Dashboard as DashboardFacade;
 
 class PlatformProvider extends OrchidServiceProvider
 {
@@ -89,6 +91,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
                 ->target('_blank')
                 ->badge(fn () => Dashboard::version(), Color::DARK),
+
+            Menu::make('Calculator')
+                ->icon('calculator')
+                ->route('platform.calculator'),
+
+            Menu::make('Converter')
+                ->icon('calculator')
+                ->route('platform.converter'),
         ];
     }
 
@@ -105,4 +115,5 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.users', __('Users')),
         ];
     }
+    
 }
